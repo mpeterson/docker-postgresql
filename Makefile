@@ -1,6 +1,6 @@
 AUTHOR=mpeterson
 NAME=postgresql
-VERSION=0.2
+VERSION=0.3
 
 .PHONY: all build tag_latest
 

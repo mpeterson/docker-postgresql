@@ -10,7 +10,7 @@ echo "Dropping current cluster"
 sudo -u postgres pg_dropcluster $CLUSTER_VERSION main
 
 echo "Creating new cluster with UTF8 encoding"
-sudo -u postgres pg_createcluster --locale=en_US.UTF8 $CLUSTER_VERSION main
+sudo -u postgres pg_createcluster --locale=$LC_ALL $CLUSTER_VERSION main
 
 # Allow connections from anywhere.
 sed -i -e"s/^#listen_addresses =.*$/listen_addresses = '*'/" /etc/postgresql/$CLUSTER_VERSION/main/postgresql.conf
@@ -30,4 +30,4 @@ sudo -u postgres service postgresql stop
 # Cofigure the database to use our data dir.
 sed -i -e"s|data_directory =.*$|data_directory = '$DATA_DIR'|" /etc/postgresql/$CLUSTER_VERSION/main/postgresql.conf
 
-chown -R postgres:postgres $DATA_DIR 
+chown -R postgres:postgres $DATA_DIR

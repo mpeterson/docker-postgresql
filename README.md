@@ -7,12 +7,10 @@
 This example considers that you have a [data-only container](http://docs.docker.io/use/working_with_volumes/) however it's not needed for it to run correctly.
 
 ```bash
-sudo docker run -d --volumes-from pgsql_data --name pgsql -p 127.0.0.1::22 mpeterson/postgresql
+sudo docker run -d --volumes-from pgsql_data --name pgsql mpeterson/postgresql
 ```
 
 Since the idea is to use this linked with another container the Postgresql port is not exposed in the previous example.
-
-*__Note:__ Notice that since the image is based on [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) it has a SSH service listening on 22 which in the example above is mapped so we can access the image in the case we wanted to.*
 
 ### Default DB User
 By default this image creates the following user with superadmin:
